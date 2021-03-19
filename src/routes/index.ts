@@ -6,7 +6,6 @@ export class Routes {
     public gamesController: GamesController = new GamesController();
 
    /*eslint-disable */
-
     public routes(app ): void {
         app.route("/api/v1/add-players")
             .post(this.playersController.addPlayers);

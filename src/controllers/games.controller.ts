@@ -3,6 +3,7 @@ import { Game } from '../models/games.model'
 
 export class GamesController {
 
+    // add game score to the table.
     public async addGame(req: Request, res: Response) : Promise<void> {
         Game.create<Game>(req.body)
         .then((game : Game) => res.status(200).json(game))

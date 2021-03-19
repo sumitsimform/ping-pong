@@ -1,8 +1,7 @@
-// lib/models/Player.model.ts
 import { Model, DataTypes } from "sequelize";
 import { database } from "../config/database";
-import { Game } from "./games.model";
 
+// players model
 export class Player extends Model {
   public id!: number; 
   public name!: string;
@@ -27,22 +26,12 @@ Player.init(
     }
   },
   {
-    // underscored: true,
+    freezeTableName: true,
     tableName: "players",
-    sequelize: database // this bit is important
+    sequelize: database 
   }
 );
 
-Player.hasMany(Game, {
-  sourceKey: "id",
-  foreignKey: "player1",
-  as: "firstPlayers"
-});
 
-Player.hasMany(Game, {
-  sourceKey: "id",
-  foreignKey: "player2",
-  as: "secondPlayers"
-});
 
 Player.sync({ force: false }).then(() => console.log("Player table created"));

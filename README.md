@@ -25,3 +25,12 @@
 ## Usage
 
 Ping-pong is basically the application for tracking the game score, in this we can enter the names of the players and then we can add there win scores.
+
+
+## sample env file 
+
+#database credentials
+DATABASE_NAME=ping-pong
+DATABASE_HOST=localhost
+DATABASE_USER=postgres
+DATABASE_PASSWORD=root

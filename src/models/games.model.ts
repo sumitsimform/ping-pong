@@ -1,6 +1,8 @@
 import { Model, DataTypes } from "sequelize";
 import { database } from "../config/database";
+import { Player } from "./players.model";
 
+// game model
 export class Game extends Model {
   public id!: number;
   public player1!: number;
@@ -38,11 +40,20 @@ Game.init(
       }
   },
   {
-    // underscored: true,
+    freezeTableName: true,
     tableName: "games",
-    sequelize: database // this bit is important
+    sequelize: database 
   }
 );
 
+Game.belongsTo(Player, {
+  foreignKey: "player1",
+  as: "firstPlayers"
+});
+
+Game.belongsTo(Player, {
+  foreignKey: "player2",
+  as: "secondPlayers"
+});
 
 Game.sync({ force: false }).then(() => console.log("Game table created"));
